@@ -1,0 +1,30 @@
+{
+  "name": "frontend-nanodegree-mobile-portfolio",
+  "version": "1.0.0",
+  "description": "project 5",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinglebot/frontend-nanodegree-mobile-portfolio.git"
+  },
+  "author": "MCL Sales",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinglebot/frontend-nanodegree-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/jinglebot/frontend-nanodegree-mobile-portfolio#readme",
+  "devDependencies": {
+    "concat": "0.0.1-security",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-responsive-images": "^0.1.7"
+  },
+  "dependencies": {
+    "imagemin-mozjpeg": "^5.1.0"
+  }
+}
