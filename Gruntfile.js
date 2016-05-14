@@ -1,8 +1,9 @@
 module.exports = function(grunt) {
 
-    // 1. All configuration goes here
+    //  Configure
 
-    var mozjpeg = require('imagemin-mozjpeg');
+    // var mozjpeg = require('imagemin-mozjpeg');
+    // require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -19,76 +20,105 @@ module.exports = function(grunt) {
 
         // uglify: {
         //     build: {
-        //         src: 'js/build/production.js',
-        //         dest: 'js/build/production.min.js'
+        //         cwd: 'src/js/',
+        //         src: ['*.js', '!*.min.js'],
+        //         dest: 'dist/js/',
+        //         ext: '.min.js'
         //     }
         // },
-
-        imagemin: {
-            static: {
-                options: {
-                    optimizationLevel: 3,
-                    svgoPlugins: [{ removeViewBox: false }],
-                    use: [mozjpeg()]
-                },
-                files: {                         // Dictionary of files
-                    // 'images/pizza.png': 'views/images/pizza.png' // 'destination': 'source'
-                    'images/profilepic.jpg': 'img/profilepic.jpg'
-                }
-            }
-
-            // dynamic: {
-            //     files: [{
-            //         expand: true,
-            //         cwd: 'views/',
-            //         src: ['images/pizzeria.jpg'],
-            //         dest: 'images/',
-            //         suffix: '_2'
-            //     }]
-            // }
-        },
 
         responsive_images: {
             dev: {
                 options: {
                     engine: 'im',
-                  sizes: [{
-                    name: 'sm',
-                    width: '640',
-                    // suffix: '_sm',
-                    quality: 20
-                  },{
-                    name: 'md',
-                    width: '1024',
-                    // suffix: '_md',
-                    quality: 40
-                  },{
-                    name: 'lg',
-                    width: '2048',
-                    // suffix: '_lg',
-                    quality: 60
-                  }]
+                    sizes: [{
+                        name: 'sm',
+                        width: '100',
+                        // suffix: '_sm',
+                        quality: 20
+                    },{
+                        name: 'md',
+                        width: '200',
+                        // suffix: '_md',
+                        quality: 40
+                    },{
+                        name: 'lg',
+                        width: '300',
+                        // suffix: '_lg',
+                        quality: 60
+                    }]
                 },
                 files: [{
-                  expand: true,
-                  // src: ['*.{gif,jpg,png}'],
-                  src: ['pizzeria.jpg'],
-                  cwd: 'views/images/',
-                  dest: 'images/'
+                    expand: true,
+                    cwd: 'src/',
+                    // src: ['***/**/*.{gif,jpg,png}'],
+                    src: ['views/images/pizzeria.jpg'],
+                    dest: 'dist/'
                 }]
-              }
             }
+        },
+
+        imagemin: {
+        //     static: {
+        //         options: {
+        //             optimizationLevel: 3,
+        //             svgoPlugins: [{ removeViewBox: false }],
+        //             use: [mozjpeg()]
+        //         },
+        //         files: {                         // Dictionary of files
+                    // 'images/pizza.png': 'views/images/pizza.png' // 'destination': 'source'
+            //         'images/profilepic.jpg': 'img/profilepic.jpg'
+            //     }
+            // }
+
+            dynamic: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['***/**/*.{gif,jpg,png}'],
+                    dest: 'dist/',
+                    suffix: '_opt'
+                }]
+            }
+        },
+
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/css/',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'dist/css',
+                    ext: '.min.css'
+                }]
+            }
+        },
+
+        minifyHtml: {
+            options: {
+                cdata: true
+            },
+            dist: {
+                files: {
+                        'dist/index.html': 'src/index.html'
+        //         dest: 'dist/js/',
+        //         ext: '.min.js'
+                }
+            }
+        }
 
     });
 
-    // 3. Where we tell Grunt we plan to use this plug-in.
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    //  Load
+    // grunt.loadNpmTasks('grunt-contrib-concat');
+    // grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-responsive-images');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-minify-html');
 
-    // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    // grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'responsive_images']);
-    grunt.registerTask('default', ['imagemin']);
+    //  Register
+    // grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'responsive_images', 'cssmin', 'minifyHtml']);
+    grunt.registerTask('default', ['minifyHtml']);
 
 };

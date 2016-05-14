@@ -71,3 +71,7 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
 * <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
 * <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+
+##Build Tool used : Grunt
+1.) responsive_images was used to create a srcset for pizzeria.jpg
+2.) imageoptim was used to optimize 
