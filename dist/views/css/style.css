@@ -33,8 +33,8 @@ form {
   position: fixed;
   width: 256px;
   z-index: -1;
-/*  transform: translateZ(0);*/
-  /*transition: transform 0.5s;*/
+  backface-visibility:hidden;
+    /*transition: transform 0.5s;*/
   will-change: transform;
   /*transform: translateX(calc(left*2));*/
 }
@@ -42,6 +42,7 @@ form {
 .randomPizzaContainer {
   float: left;
   display: flex;
+  will-change: transform;
 }
 
 .randomPizzaContainer:after {

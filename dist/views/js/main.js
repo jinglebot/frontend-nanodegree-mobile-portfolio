@@ -528,10 +528,11 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
+  var items = document.getElementsByClassName('.mover');
+  var itemslength = items.length;
+  for (var i = 0; i < itemslength; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.transform = translateX(items[i].basicLeft + 100 * phase + 'px');
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -542,6 +543,8 @@ function updatePositions() {
     var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
     logAverageFrame(timesToUpdatePosition);
   }
+
+  requestAnimationFrame(updatePositions);
 }
 
 // runs updatePositions on scroll
@@ -551,7 +554,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 20; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -561,5 +564,6 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  updatePositions();
+   // window.items = document.getElementsByClassName ('.mover');
+  requestAnimationFrame(updatePositions);
 });

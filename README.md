@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
@@ -71,3 +72,18 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
 * <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
 * <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+
+##Build Tool used : Grunt
+1.) responsive_images was used to create a srcset for pizzeria.jpg
+2.) imageoptim was used to optimize 
+||||||| merged common ancestors
+=======
+# Web Workers Demo
+Migrate Long Running JS onto a Web Worker
+
+### [Relevant Quiz from Browser Rendering Optimization](https://www.udacity.com/course/viewer#!/c-ud860/l-4138168623/e-4184098558/m-4150829139)
+
+### [Relevant solution from Browser Rendering Optimization](https://www.udacity.com/course/viewer#!/c-ud860/l-4138168623/e-4184098558/m-4146278980)
+
+Working on the quiz? Start by examining index.html and the JavaScript files linked inside it.
+>>>>>>> 574f65382cf3b7ede36b61e5abdcb9e7ba0a2639
