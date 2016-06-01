@@ -30,6 +30,7 @@ module.exports = function(grunt) {
         responsive_images: {
             dev: {
                 options: {
+
                     engine: 'im',
                     sizes: [{
                         name: 'sm',
@@ -47,6 +48,29 @@ module.exports = function(grunt) {
                         // suffix: '_lg',
                         quality: 80
                     }]
+
+                    optimizationLevel: 3,
+                    svgoPlugins: [{ removeViewBox: false }],
+                    use: [mozjpeg()]
+
+                    // engine: 'im',
+                    // sizes: [{
+                    //     name: 'sm',
+                    //     width: '100',
+                    //     // suffix: '_sm',
+                    //     quality: 20
+                    // },{
+                    //     name: 'md',
+                    //     width: '200',
+                    //     // suffix: '_md',
+                    //     quality: 40
+                    // },{
+                    //     name: 'lg',
+                    //     width: '300',
+                    //     // suffix: '_lg',
+                    //     quality: 60
+                    // }]
+
                 },
                 files: [{
                     expand: true,
@@ -117,8 +141,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-minify-html');
 
-    //  Register
+    // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     // grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'responsive_images', 'cssmin', 'minifyHtml']);
-    grunt.registerTask('default', ['responsive_images', 'imagemin', 'cssmin', 'minifyHtml']);
-
+    grunt.registerTask('default', ['minifyHtml']);
 };

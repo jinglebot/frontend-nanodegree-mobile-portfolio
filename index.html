@@ -7,17 +7,26 @@
     <meta name="author" content=" FILL ME IN ">
     <title>Cameron Pittman: Portfolio</title>
 
+    <style>
+      body { background: #fff; margin: 0; font-size: 14px; line-height: 1.61; font-weight: 400; color: #333; }
+      header { padding: 0 0.5em; color: #C90B0B; }
+      .hero { padding: 2em; background-color: #f8f8f8; font-size:1.2em; }
+    </style>
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... dang! it's heavy! -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-
+<!--     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/print.css" rel="stylesheet" media="print"> <!-- *** added media="print" *** -->
+ -->    <link href="css/print.css" rel="stylesheet" media="print"> <!-- *** added media="print" *** -->
 
     <script async src="http://www.google-analytics.com/analytics.js"></script><!-- *** added async tag *** -->
     <script async src="js/perfmatters.js"></script>
   </head>
 
   <body>
+    <noscript id="deferred-styles">
+      <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+      <link href="css/style.css" rel="stylesheet">
+    </noscript>
+
     <header>
       <a href="/"><img src="images/profilepic.jpg" alt="Cameron's profile picture"></a>
       <p>Cameron Pittman<br><span>Course Developer</span></p>
@@ -66,6 +75,19 @@
       // Optional TODO: replace with your Google Analytics profile ID.
       ga('create', 'UA-XXXX-Y');
       ga('send', 'pageview');
+    </script>
+    <script>
+      var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+          webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+      else window.addEventListener('load', loadDeferredStyles);
     </script>
   </body>
 </html>
