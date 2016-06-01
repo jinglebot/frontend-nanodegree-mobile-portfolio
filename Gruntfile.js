@@ -2,8 +2,8 @@ module.exports = function(grunt) {
 
     //  Configure
 
-    // var mozjpeg = require('imagemin-mozjpeg');
-    // require('load-grunt-tasks')(grunt);
+     var mozjpeg = require('imagemin-mozjpeg');
+     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -83,15 +83,15 @@ module.exports = function(grunt) {
         },
 
         imagemin: {
-        //     static: {
-        //         options: {
-        //             optimizationLevel: 3,
-        //             svgoPlugins: [{ removeViewBox: false }],
-        //             use: [mozjpeg()]
-        //         },
-        //         files: {                         // Dictionary of files
-                    // 'images/pizza.png': 'views/images/pizza.png' // 'destination': 'source'
-            //         'images/profilepic.jpg': 'img/profilepic.jpg'
+            // static: {
+            //     options: {
+            //         optimizationLevel: 3,
+            //         svgoPlugins: [{ removeViewBox: false }],
+            //         use: [mozjpeg()]
+            //     },
+            //     files: {                         // Dictionary of files
+            //         // 'images/pizza.png': 'views/images/pizza.png' // 'destination': 'source'
+                    // 'dist/img/profilepic.jpg': 'src/img/profilepic.jpg'
             //     }
             // }
 
@@ -99,9 +99,10 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['***/**/*.{gif,jpg,png}'],
-                    dest: 'dist/',
-                    suffix: '_opt'
+                    // src: ['***/**/*.{gif,jpg,png}'],
+                    src: 'img/profilepic.jpg',
+                    dest: 'dist/'
+                    // suffix: '_opt'
                 }]
             }
         },
@@ -143,5 +144,5 @@ module.exports = function(grunt) {
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     // grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'responsive_images', 'cssmin', 'minifyHtml']);
-    grunt.registerTask('default', ['minifyHtml']);
+    grunt.registerTask('default', ['imagemin']);
 };
