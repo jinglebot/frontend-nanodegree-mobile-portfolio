@@ -2,8 +2,8 @@ module.exports = function(grunt) {
 
     //  Configure
 
-     var mozjpeg = require('imagemin-mozjpeg');
-     require('load-grunt-tasks')(grunt);
+     // var mozjpeg = require('imagemin-mozjpeg');
+     // require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -27,31 +27,31 @@ module.exports = function(grunt) {
         //     }
         // },
 
-        responsive_images: {
-            dev: {
-                options: {
+        // responsive_images: {
+        //     dev: {
+        //         options: {
 
-                    engine: 'im',
-                    sizes: [{
-                        name: 'sm',
-                        width: '640',
-                        // suffix: '_sm',
-                        quality: 40
-                    },{
-                        name: 'md',
-                        width: '1024',
-                        // suffix: '_md',
-                        quality: 60
-                    },{
-                        name: 'lg',
-                        width: '2048',
-                        // suffix: '_lg',
-                        quality: 80
-                    }]
+        //             engine: 'im',
+        //             sizes: [{
+        //                 name: 'sm',
+        //                 width: '640',
+        //                 // suffix: '_sm',
+        //                 quality: 40
+        //             },{
+        //                 name: 'md',
+        //                 width: '1024',
+        //                 // suffix: '_md',
+        //                 quality: 60
+        //             },{
+        //                 name: 'lg',
+        //                 width: '2048',
+        //                 // suffix: '_lg',
+        //                 quality: 80
+        //             }]
 
-                    optimizationLevel: 3,
-                    svgoPlugins: [{ removeViewBox: false }],
-                    use: [mozjpeg()]
+        //             optimizationLevel: 3,
+        //             svgoPlugins: [{ removeViewBox: false }],
+        //             use: [mozjpeg()]
 
                     // engine: 'im',
                     // sizes: [{
@@ -71,18 +71,18 @@ module.exports = function(grunt) {
                     //     quality: 60
                     // }]
 
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'src/',
+                // },
+                // files: [{
+                //     expand: true,
+                //     cwd: 'src/',
                     // src: ['***/**/*.{gif,jpg,png}'],
-                    src: ['views/images/pizzeria.jpg'],
-                    dest: 'dist/'
-                }]
-            }
-        },
+        //             src: ['views/images/pizzeria.jpg'],
+        //             dest: 'dist/'
+        //         }]
+        //     }
+        // },
 
-        imagemin: {
+        // imagemin: {
             // static: {
             //     options: {
             //         optimizationLevel: 3,
@@ -95,29 +95,29 @@ module.exports = function(grunt) {
             //     }
             // }
 
-            dynamic: {
-                files: [{
-                    expand: true,
-                    cwd: 'src/',
-                    // src: ['***/**/*.{gif,jpg,png}'],
-                    src: 'img/profilepic.jpg',
-                    dest: 'dist/'
-                    // suffix: '_opt'
-                }]
-            }
-        },
+        //     dynamic: {
+        //         files: [{
+        //             expand: true,
+        //             cwd: 'src/',
+        //             // src: ['***/**/*.{gif,jpg,png}'],
+        //             src: 'img/profilepic.jpg',
+        //             dest: 'dist/'
+        //             // suffix: '_opt'
+        //         }]
+        //     }
+        // },
 
-        cssmin: {
-            target: {
-                files: [{
-                    expand: true,
-                    cwd: 'src/css/',
-                    src: ['*.css', '!*.min.css'],
-                    dest: 'dist/css',
-                    ext: '.min.css'
-                }]
-            }
-        },
+        // cssmin: {
+        //     target: {
+        //         files: [{
+        //             expand: true,
+        //             cwd: 'src/css/',
+        //             src: ['*.css', '!*.min.css'],
+        //             dest: 'dist/css',
+        //             ext: '.min.css'
+        //         }]
+        //     }
+        // },
 
         minifyHtml: {
             options: {

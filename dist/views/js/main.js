@@ -332,6 +332,13 @@ var ingredientItemizer = function(string) {
   return "<li>" + string + "</li>";
 };
 
+// =========================
+// Create Web Worker
+
+if (window.Worker) {
+  var webworker = new Worker('worker.js');
+}
+
 // Returns a string with random pizza ingredients nested inside <li> tags
 var makeRandomPizza = function() {
   var pizza = "";
@@ -517,7 +524,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
   for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
     sum = sum + times[i].duration;
   }
-  console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
+ // console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
 }
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
