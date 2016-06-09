@@ -1,3 +1,5 @@
+// 'use strict';
+
 /*
 Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
 jank-free at 60 frames per second.
@@ -431,13 +433,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -462,7 +464,7 @@ var resizePizzas = function(size) {
           console.log("bug in sizeSwitcher");
       }
 
-    var randomPs = document.getElementsByClassName(".randomPizzaContainer");
+    var randomPs = document.getElementsByClassName("randomPizzaContainer");
     var randomPslength = randomPs.length;
 
     for (var i = 0; i < randomPslength; i++) {
@@ -482,8 +484,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -516,10 +518,12 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.getElementsByClassName('mover');
+  var top = document.body.scrollTop / 1250;
+  var phase;
   var itemslength = items.length;
   for (var i = 0; i < itemslength; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-     items[i].style.webkitTransform = "translateX(+ 100 * phase + 'px')";
+    phase = Math.sin(top + (i % 5));
+     items[i].style.transform = 'translateX(' + 100 * phase + 'px)';
 }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -541,15 +545,17 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 20; i++) {
-    var elem = document.createElement('img');
+  var elem;
+  var movingPizzas = document.getElementById("movingPizzas1");
+  for (var i = 0; i < 200; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+    elem.style.left = (i % cols) * s + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   requestAnimationFrame(updatePositions);
 });
