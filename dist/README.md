@@ -39,3 +39,44 @@ The plugin used for this project is responsive-images only. I used it for the pi
 ##Bugs:
 1.) background pizzas won't move
 2.) webworker doesn't work
+
+##Revisions:
+
+Replaced querySelector methods to getElementById in main.js
+Corrected var randomPs typo in main.js
+Transferred var pizzasDiv from inside to outside the for loop in main.js
+Saved and transferred document.body.scrollTop / 1250 outside the for loop in main.js
+Transferred var phase initialization outside the for loop in main.js
+Corrected items[i].style.transform = 'translateX(' + 100 * phase + 'px)'; in main.js
+Changed number of pizzas to 24 in main.js
+Transferred var elem from inside to outside the for loop in main.js
+Replaced elem.basicLeft with elem.style.left for transform/translateX property in main.js 
+Saved and transferred call for document.getElementById("movingPizzas1") to outside the for loop in main.js
+Initialize var elem outside the for loop in main.js
+Removed will-change: transform in style.css
+
+##How to work the program:
+
+Part 1:
+Open command prompt
+CD to local folder C:\Users\\...\...\frontend-nanodegree-mobile-portfolio\dist
+Type in command python -m SimpleHTTPServer 8080
+Open ngrok file to open ngrok window
+Type in ngrok window ngrok http 8080
+Copy the link given in the ngrok window and paste on an open Chrome browser                                
+The localhost will open securely on the Google Chrome browser. You can check here how your webpage is online.
+Open PageSpeed Insights in another browser.
+Type in the given ngrok link on the form window and press start.
+This will give you a PageSpeed Insights Analysis of the link you typed in.
+
+Part 2:
+Open command prompt
+CD to local folder C:\Users\\...\...\frontend-nanodegree-mobile-portfolio\dist\views
+Type in command python -m SimpleHTTPServer 8080
+Open ngrok file to open ngrok window
+Type in ngrok window ngrok http 8080
+Copy the link given in the ngrok window and paste on an open Chrome browser + /pizza
+If a directory of files display instead, click on the file pizza.html
+The localhost will open securely on the Google Chrome browser. You can check here how your webpage is online.
+Open Chrome Developer Tools.
+Press the Timeline button to be able to do frame rate measurements

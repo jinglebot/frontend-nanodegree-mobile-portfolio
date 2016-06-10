@@ -52,6 +52,7 @@ Changed number of pizzas to 24 in main.js
 Transferred var elem from inside to outside the for loop in main.js
 Replaced elem.basicLeft with elem.style.left for transform/translateX property in main.js 
 Saved and transferred call for document.getElementById("movingPizzas1") to outside the for loop in main.js
+Initialize var elem outside the for loop in main.js
 Removed will-change: transform in style.css
 
 ##How to work the program:
