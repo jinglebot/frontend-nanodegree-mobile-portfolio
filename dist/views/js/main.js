@@ -589,20 +589,21 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 // document.addEventListener('DOMContentLoaded', function() {
-// document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  var elem = document.createElement('img'); // Transferred from inside to outside the for loop
+  var elem; // Initialize from inside to outside the for loop
   var movingPizzas = document.getElementById("movingPizzas1"); // Changed querySelector to getElementById
-    elem.className = 'mover';
-    elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
-  for (var i = 0; i < 24; i++) { // Changed number of pizzas to 24
     // elem.className = 'mover';
     // elem.src = "images/pizza.png";
     // elem.style.height = "100px";
     // elem.style.width = "73.333px";
+  for (var i = 0; i < 200; i++) { // Changed number of pizzas to 24
+    elem = document.createElement('img');
+    elem.className = 'mover';
+    elem.src = "images/pizza.png";
+    elem.style.height = "100px";
+    elem.style.width = "73.333px";
     elem.style.left = (i % cols) * s + 'px'; // Replaced elem.basicLeft with elem.style.left
                                               // Computation: (col of the pizza/total # of col) * size of pixel
                                               // TODO: change to (col pizza/ # col) * width of viewport
@@ -612,7 +613,7 @@ window.addEventListener('scroll', updatePositions);
 
   requestAnimationFrame(updatePositions);
   // updatePositions;
-// });
+ });
 
 // TODO:
 // 1.) web worker namePizzaworker
