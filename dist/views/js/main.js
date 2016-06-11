@@ -1,6 +1,6 @@
 // For good developer practice
 // ---------------------------
-// "use strict";
+"use strict";
 
 /*
 Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
@@ -315,7 +315,11 @@ function randomName() {
   // ************************
 
   var pizzaName = "";
-  // namePizzaWorker.postMessage(); // Start the worker
+  var adjectives;
+  var nouns;
+  // var randomNumberAdj;
+  // var randomNumberNoun;
+  namePizzaWorker.postMessage([adjectives, nouns]); // Start the worker
 
   // randomNumberAdj.onchange = function () {
   //   namePizzaWorker.postMessage([randomNumberAdj, randomNumberNoun]);
@@ -329,7 +333,7 @@ function randomName() {
 
   namePizzaWorker.onmessage = function(e) {
     pizzaName = e.data;
-    console.log('Message from worker');
+    console.log('adjectives = ' + e.data[0] + ', nouns = ' + e.data[1]);
   }
 
   return pizzaName;
@@ -382,16 +386,18 @@ function randomName() {
 // Returns a string with random pizza ingredients nested inside <li> tags
 var makeRandomPizza = function() {
   var pizza = "";
-
-  var numberOfMeats = Math.floor((Math.random() * 4));
-  var numberOfNonMeats = Math.floor((Math.random() * 3));
-  var numberOfCheeses = Math.floor((Math.random() * 2));
+  var numberOfMeats = {};
+  var numberOfNonMeats = {};
+  var numberOfCheeses = {};
+  numberOfMeats.amount = Math.floor((Math.random() * 4));
+  numberOfNonMeats.amount = Math.floor((Math.random() * 3));
+  numberOfCheeses.amount = Math.floor((Math.random() * 2));
 
 
   // Webworker to make pizzas
   // ************************
 
-  numberOfMeats.onmessage = function () {
+  numberOfMeats.onchange = function () {
     createPizzaWorker.postMessage([numberOfMeats, numberOfNonMeats, numberOfCheeses]);
     console.log('Message posted to worker');
   }

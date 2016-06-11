@@ -3,8 +3,8 @@ importScripts('main.js');
 onmessage = function (e) {
   console.log('Message received from main.js');
 
-  // var workeradj = e.data[0];
-  // var workernoun = e.data[1];
+  var adjectives = e.data[0];
+  var nouns = e.data[1];
 
   // Name generator pulled from http://saturdaykid.com/usernames/generator.html
   // Capitalizes first letter of each word
@@ -146,8 +146,8 @@ onmessage = function (e) {
     }
   }
 
-  var adjectives = ["dark", "color", "whimsical", "shiny", "noise", "apocalyptic", "insulting", "praise", "scientific"];  // types of adjectives for pizza titles
-  var nouns = ["animals", "everyday", "fantasy", "gross", "horror", "jewelry", "places", "scifi"];                        // types of nouns for pizza titles
+  adjectives = ["dark", "color", "whimsical", "shiny", "noise", "apocalyptic", "insulting", "praise", "scientific"];  // types of adjectives for pizza titles
+  nouns = ["animals", "everyday", "fantasy", "gross", "horror", "jewelry", "places", "scifi"];                        // types of nouns for pizza titles
 
   // Generates random numbers for getAdj and getNoun functions and returns a new pizza name
   function generator(adj, noun) {
@@ -164,6 +164,6 @@ onmessage = function (e) {
 
   console.log('Posting message back to main.js');
 
-  postMessage(generator(adjectives[randomNumberAdj], nouns[randomNumberNoun]));
-
+  // postMessage(generator(adjectives[randomNumberAdj], nouns[randomNumberNoun]));
+  postMessage([adjectives, nouns]);
 }

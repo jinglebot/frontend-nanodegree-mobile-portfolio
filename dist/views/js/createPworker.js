@@ -9,7 +9,6 @@ onmessage = function (e) {
 
 	var pizza = "";
 
-
 	// Here are arrays of all possible pizza ingredients.
 	var pizzaIngredients = {};
 	pizzaIngredients.meats = [
@@ -165,15 +164,15 @@ onmessage = function (e) {
 	  return "<li>" + string + "</li>";
 	};
 
-	for (var i = 0; i < numberOfMeats; i++) {
+	for (var i = 0; i < numberOfMeats.amount; i++) { // changed to an object
 		pizza = pizza + ingredientItemizer(selectRandomMeat());
 	}
 
-	for (var j = 0; j < numberOfNonMeats; j++) {
+	for (var j = 0; j < numberOfNonMeats.amount; j++) {
 		pizza = pizza + ingredientItemizer(selectRandomNonMeat());
 	}
 
-	for (var k = 0; k < numberOfCheeses; k++) {
+	for (var k = 0; k < numberOfCheeses.amount; k++) {
 		pizza = pizza + ingredientItemizer(selectRandomCheese());
 	}
 
