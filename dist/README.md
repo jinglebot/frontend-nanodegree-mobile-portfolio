@@ -1,6 +1,6 @@
 # Website Performance Optimization portfolio project
 
-#Part 1 : Optimize PageSpeed Insight score for index.html
+#Part 1 : Optimize PageSpeed Insight score for `index.html`
 
 ##What I did:
 I forked Cameron's repo, copied it to my local folder and edited from there. I created _dist_ and _src_ folders to separate and distinguish the original from the edited files. I used _Grunt_ for basic tasks, the _Python_ localhost for testing the site locally as well as _ngrok_ to test online and got the PageSpeed from Google's PageSpeed Insights.
@@ -39,7 +39,9 @@ The plugin used for this project is _responsive-images_ only. I used it for the 
 ##Bug:
 1. webworker _pizzaworker_ doesn't work
 
-##Revisions:
+************
+
+##Revisions of above set:
 
 1. Replaced _querySelector_ methods to _getElementById_ in `main.js`
 2. Corrected _var_ _randomPs_ typo in `main.js`
@@ -56,7 +58,7 @@ The plugin used for this project is _responsive-images_ only. I used it for the 
 
 ##How to work the program:
 
-Part 1:
+###Part 1
 1. Open **Command Prompt**
 2. CD to local folder `C:\Users\\...\...\frontend-nanodegree-mobile-portfolio\dist`
 3. Type in command _python -m SimpleHTTPServer 8080_
@@ -68,7 +70,7 @@ Part 1:
 9. Type in the given _ngrok_ link on the form window and press start.
 10. This will give you a _PageSpeed Insights Analysis_ of the link you typed in.
 
-Part 2:
+###Part 2
 1. Open **Command Prompt**
 2. CD to local folder `C:\Users\\...\...\frontend-nanodegree-mobile-portfolio\dist\views`
 3. Type in command _python -m SimpleHTTPServer 8080_
@@ -78,3 +80,6 @@ Part 2:
 7. The localhost will open on the **Google Chrome** browser. You can check here how your webpage looks online.
 8. Open **Chrome Developer Tools**.
 9. Press the _Timeline_ button to be able to do frame rate measurements
+
+TODO:
+1. Webworker works now but still have to study it some more
