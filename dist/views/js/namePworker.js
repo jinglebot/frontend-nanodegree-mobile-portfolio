@@ -1,10 +1,11 @@
-importScripts('main.js');
+// importScripts('main.js');
 
 onmessage = function (e) {
-  console.log('Message received from main.js');
 
-  var adjectives = e.data[0];
-  var nouns = e.data[1];
+  // console.log('Message received from main.js');
+
+  var adjective = e.data[0];
+  var noun = e.data[1];
 
   // Name generator pulled from http://saturdaykid.com/usernames/generator.html
   // Capitalizes first letter of each word
@@ -162,8 +163,8 @@ onmessage = function (e) {
   var randomNumberAdj = parseInt(Math.random() * adjectives.length);
   var randomNumberNoun = parseInt(Math.random() * nouns.length);
 
-  console.log('Posting message back to main.js');
+  // console.log('Posting message back to main.js');
 
-  // postMessage(generator(adjectives[randomNumberAdj], nouns[randomNumberNoun]));
-  postMessage([adjectives, nouns]);
+  postMessage(generator(adjectives[randomNumberAdj], nouns[randomNumberNoun]));
+  // postMessage(generator(adjective, noun));
 }

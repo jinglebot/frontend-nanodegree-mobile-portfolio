@@ -20,8 +20,8 @@ Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
 
-As you may have realized, this website randomly generates pizzas.
-Here are arrays of all possible pizza ingredients.
+// As you may have realized, this website randomly generates pizzas.
+// Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
   "Pepperoni",
@@ -308,19 +308,20 @@ function randomName() {
 
   // *****************************************
 
-  // Create webworker named namePizzaworker to name the pizzas
+  // Create webworker named namePizzaworker to name pizzas
 
-  // var namePizzaWorker = new window.Worker("namePworker.js");
+  // var namePizzaWorker = new Worker("js/namePworker.js");
 
   // Webworker to name pizzas
 
   // function randomName() {
   //   var pizzaName = "";
-  //   var adjectives;
-  //   var nouns;
+  //   var adjective;
+  //   var noun;
+  // console.log('adjective before = ' + adjective + ', noun before = ' + noun);
   // var randomNumberAdj;
   // var randomNumberNoun;
-  // namePizzaWorker.postMessage([adjectives, nouns]); // Start the worker
+  // namePizzaWorker.postMessage([adjective, noun]); // Start the worker
 
   // randomNumberAdj.onchange = function () {
   //   namePizzaWorker.postMessage([randomNumberAdj, randomNumberNoun]);
@@ -334,10 +335,17 @@ function randomName() {
 
   // namePizzaWorker.onmessage = function(e) {
   //   pizzaName = e.data;
-  //   console.log('adjectives = ' + e.data[0] + ', nouns = ' + e.data[1]);
+  //   callback(pizzaName);
   // }
 
-  // return pizzaName;
+  // function callback(pizzaName) {
+    // console.log(pizzaName); // Pizza Name is defined in this scope because this function is called AFTER pizzaName has been assigned a value in the onmessage method
+  //   return pizzaName;
+  // }
+    // console.log(e.data);
+  //   callback(pizzaName);
+  //   console.log(pizzaName); // Pizza Name is defined in this scope because this function is called AFTER pizzaName has been assigned a value in the onmessage method
+  //   return pizzaName;
 
   // }
   // ************************************************
@@ -521,6 +529,7 @@ var resizePizzas = function(size) {
   }
 
   changeSliderLabel(size);
+  var newWidth;
 
   // Iterates through pizza elements on the page and changes their widths
     function changePizzaSizes(size) {
@@ -615,13 +624,20 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-// document.addEventListener('DOMContentLoaded', function() {
- document.addEventListener('DOMContentLoaded', function() {
+// compute max number of placeable pizzas
+// compute viewport height = causes FSL
+// var vph = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+// compute number of rows
+// var rows = vph/300;
+
+document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
+  var rows = 5;
+  var numpizza = (cols * rows) - 1;
   var s = 256;
   var elem; // Initialize from inside to outside the for loop
   var movingPizzas = document.getElementById("movingPizzas1"); // Changed querySelector to getElementById
-  for (var i = 0; i < 200; i++) { // Still have to change number of pizzas
+  for (var i = 0; i < numpizza; i++) { // Number of pizzas adjust to viewport size
     elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -635,14 +651,8 @@ window.addEventListener('scroll', updatePositions);
   }
 
   requestAnimationFrame(updatePositions);
-  // updatePositions;
  });
 
 // TODO:
 // 1.) web worker namePizzaworker
 // 2.) web worker createPizzaworker
-// 3.) make pizza background show
-// 4.) make pizza background move
-// 5.) rewrite README file
-// 6.) uncomment strict mode
-
